@@ -16,6 +16,7 @@ export class MainContentComponent implements OnInit {
 
 
   students: Array<IStudent> = [];
+  editMode = false;
 
   constructor() {
     this.students[0] = {
@@ -48,6 +49,7 @@ export class MainContentComponent implements OnInit {
   }
 
   addStudent() {
+    this.editMode = true;
     const student: IStudent = {
       id: 1,
       firstName: 'Mike',
@@ -58,4 +60,11 @@ export class MainContentComponent implements OnInit {
     this.students.push(student);
   }
 
+  removeStudent(index: number) {
+    this.students.splice(index, 1);
+  }
+
+  saveStudent() {
+    this.editMode = false;
+  }
 }
